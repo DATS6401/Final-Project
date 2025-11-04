@@ -11,31 +11,35 @@
 
 </div>
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Data Sources](#data-sources)
-- [Research Questions](#research-questions)
-- [Visualizations](#visualizations)
-- [Key Findings](#key-findings)
-- [Team](#team)
-- [License](#license)
-- [Contact](#contact)
+## 📋 Quick Links
+- [Installation & Usage Guide](INSTALLATION.md) - Setup instructions and detailed usage examples
+- [Key Findings](#-key-findings) - Jump to main results
+- [Visualizations](#-visualizations) - View sample outputs
+- [Policy Recommendations](#-policy-recommendations) - Actionable insights
 
-## 🌍 Overview
+---
 
-Climate change is one of the most critical challenges of our era, and CO₂ emissions are the primary contributors to this global crisis. This project provides an interactive data visualization platform that combines **Jupyter Notebook analytics** and **Tableau dashboards** to explore global CO₂ emission trends, evaluate the influence of technological advancements, and examine the roles of specific countries and sectors in contributing to emissions.
+## 🌍 Why This Project?
 
-### Motivation
+Climate change is one of the most critical challenges of our era, and **CO₂ emissions are the primary drivers** of this global crisis. Yet understanding *who* contributes most, *where* emissions come from, and *how* to address them requires comprehensive data analysis.
 
-With the global goal to limit warming to 1.5°C, reducing CO₂ emissions is crucial. This dashboard helps:
-- 🔍 Identify major emission contributors by country and sector
-- 📊 Analyze relationships between emissions and socio-economic factors
-- 🌱 Evaluate renewable energy adoption trends
-- 💡 Inform evidence-based policy recommendations
+### The Challenge
+
+With the global goal to limit warming to **1.5°C**, we face critical questions:
+- Which countries and sectors are the largest contributors?
+- How do economic development and emissions relate?
+- What role can renewable energy play in reducing emissions?
+- How can we ensure equitable climate action?
+
+### Our Solution
+
+This project provides an **interactive data visualization platform** combining:
+- **223 years of historical data** (1800-2022) analyzing global emissions trends
+- **Multi-dimensional analysis** examining country, sector, and income-based patterns
+- **Evidence-based insights** to inform policy decisions and climate action
+
+By making complex climate data accessible and understandable, we empower researchers, policymakers, and advocates to drive meaningful change toward a sustainable future.
+
 
 ## ✨ Key Features
 
@@ -53,219 +57,27 @@ With the global goal to limit warming to 1.5°C, reducing CO₂ emissions is cru
 - **Policy Impact Visualization**: Visual representation of renewable energy policies
 - **Interactive Filters**: Dynamic filtering by country, region, and time period
 
-### Advanced Analytics
-- Historical trend analysis (1800-2022)
-- Per capita emissions calculations
-- Sectoral contribution analysis
-- Renewable energy capacity tracking
-- Policy recommendation framework
+---
 
-## 📦 Installation
+## 🚀 Getting Started
 
-### Prerequisites
-- Python 3.7 or higher
-- Jupyter Notebook or JupyterLab
-- Tableau Desktop or Tableau Reader (for `.twb` files)
+For detailed installation instructions, usage examples, and project setup, please see our **[Installation & Usage Guide](INSTALLATION.md)**.
 
-### Step 1: Clone the Repository
+### Quick Start
 ```bash
+# Clone the repository
 git clone https://github.com/DATS6401/Final-Project.git
 cd Final-Project
-```
 
-### Step 2: Create Virtual Environment (Recommended)
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-### Step 3: Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Required Python Packages
-The project uses the following dependencies:
-- `pandas` - Data manipulation and analysis
-- `numpy` - Numerical computing
-- `matplotlib` - Static plotting and visualization
-- `seaborn` - Statistical data visualization
-- `plotly` - Interactive visualizations and animations
-
-### Step 4: Launch Jupyter Notebook
-```bash
+# Launch Jupyter Notebook
 jupyter notebook Visualization_Product.ipynb
 ```
 
-## 🚀 Usage
+---
 
-### Running the Jupyter Notebook
-
-1. **Open the notebook**:
-   ```bash
-   jupyter notebook Visualization_Product.ipynb
-   ```
-
-2. **Execute cells sequentially**: Run cells from top to bottom to load data, perform analysis, and generate visualizations.
-
-3. **Example: Loading and Analyzing CO₂ Data**
-   ```python
-   import pandas as pd
-   import plotly.express as px
-   
-   # Load CO2 emissions data
-   co2_data = pd.read_csv('data/CO2 Consumption emissions  1800 - 2022 - Dataset - v2 - Data source.csv')
-   
-   # Create choropleth map
-   fig = px.choropleth(co2_data,
-                       locations='Country',
-                       locationmode='country names',
-                       color='CO2_per_capita',
-                       animation_frame='Year',
-                       title='Global CO₂ Emissions Per Capita')
-   fig.show()
-   ```
-
-4. **Example: Sectoral Analysis**
-   ```python
-   # Load greenhouse gas emissions data
-   ghg_data = pd.read_csv('data/ghg-emissions.csv')
-   
-   # Analyze emissions by sector
-   sector_emissions = ghg_data.groupby('Sector')['Emissions'].sum()
-   
-   # Create visualization
-   import matplotlib.pyplot as plt
-   plt.figure(figsize=(10, 6))
-   sector_emissions.plot(kind='bar')
-   plt.title('CO₂ Emissions by Sector')
-   plt.ylabel('Total Emissions (MtCO₂e)')
-   plt.xlabel('Sector')
-   plt.xticks(rotation=45)
-   plt.tight_layout()
-   plt.show()
-   ```
-
-### Using Tableau Dashboard
-
-1. **Open Tableau file**:
-   - Navigate to the `Tableau/` directory
-   - Open `Renewable energies - policies.twb` in Tableau Desktop or Tableau Reader
-
-2. **Interact with visualizations**:
-   - Use filters to select specific countries or regions
-   - Adjust time ranges to focus on specific periods
-   - Hover over data points for detailed information
-
-3. **Export visualizations**:
-   - Sample visualizations are available as PNG files in the `Tableau/` directory:
-     - `Regional Comparision of Renewable Energy.png`
-     - `Renewable Energy Utilization Over Time.png`
-
-### Working with Data
-
-All datasets are located in the `data/` directory:
-```python
-# Load different datasets
-import pandas as pd
-
-# CO2 emissions data
-co2_data = pd.read_csv('data/CO2 Consumption emissions  1800 - 2022 - Dataset - v2 - Data source.csv')
-
-# Population data
-population = pd.read_csv('data/pop.csv')
-
-# GNI per capita data
-gni_data = pd.read_csv('data/gnicap_atm_con.csv')
-
-# Greenhouse gas emissions by sector
-ghg_emissions = pd.read_csv('data/ghg-emissions.csv')
-
-# Land-use emissions
-land_use = pd.read_csv('data/co2-land-use.csv')
-```
-
-## 📁 Project Structure
-
-```
-Final-Project/
-├── Visualization_Product.ipynb    # Main Jupyter notebook with analysis
-├── README.md                      # Project documentation
-├── requirements.txt               # Python dependencies
-├── LICENSE                        # MIT License
-├── renewable energies.xlsx        # Renewable energy dataset
-├── data/                          # Data directory
-│   ├── CO2 Consumption emissions  1800 - 2022 - Dataset - v2 - Data source.csv
-│   ├── co2-land-use.csv
-│   ├── ghg-emissions.csv
-│   ├── gnicap_atm_con.csv
-│   ├── pop.csv
-│   └── share-co2-emissions-vs-population.csv
-└── Tableau/                       # Tableau visualizations
-    ├── Renewable energies - policies.twb
-    ├── Regional Comparision of Renewable Energy.png
-    └── Renewable Energy Utilization Over Time.png
-```
-
-## 📊 Data Sources
-
-This project utilizes high-quality datasets from reputable sources:
-
-1. **Gapminder** ([gapminder.org](https://gapminder.org))
-   - CO₂ emissions by country (total and per capita)
-   - Population data (historical and forecasted)
-   - Gross National Income (GNI) per capita
-
-2. **Climate Watch** ([climatewatchdata.org](https://climatewatchdata.org))
-   - Sector-wise greenhouse gas emissions
-   - Country-level emissions data
-
-3. **IRENA** ([irena.org](https://irena.org))
-   - Renewable energy installed capacity
-   - Technology-specific renewable energy data
-
-### Data Characteristics
-- **Temporal Coverage**: 1800-2022 (historical and recent data)
-- **Geographic Coverage**: Global, with country-level granularity
-- **Sectoral Breakdown**: Energy, Agriculture, Industrial Processes, Waste, Land-Use Change
-
-## 🔬 Research Questions
-
-This project addresses seven key research questions:
-
-1. **Which countries have contributed the most to global CO₂ emissions?**
-   - Analysis of historical and cumulative emissions
-   - Identification of top emitting nations
-
-2. **Which countries have the highest per capita CO₂ emissions annually, and why?**
-   - Per capita emission calculations
-   - Correlation with income levels and industrialization
-
-3. **How do CO₂ emissions vary across income groups globally?**
-   - Income-based emission distribution
-   - Equity analysis in global emissions
-
-4. **Is there any relationship between population and CO₂ emissions?**
-   - Statistical correlation analysis
-   - Population vs. emissions scatter plots
-
-5. **Which sector has the highest impact on CO₂ emissions?**
-   - Sectoral contribution breakdown
-   - Energy, Agriculture, Industrial, and other sectors
-
-6. **How are the trends in CO₂ emissions from land-use change and forestry evolving?**
-   - Land-use change analysis
-   - Afforestation impact assessment
-
-7. **What are the policy recommendations to reduce CO₂ emissions?**
-   - Evidence-based policy framework
-   - Renewable energy adoption strategies
 
 ## 📈 Visualizations
 
@@ -290,192 +102,106 @@ The Jupyter notebook includes:
 - **Pie Charts**: Display sectoral contribution to total emissions
 - **Line Graphs**: Track emission trends and renewable energy growth
 
+---
+
+
 ## 🔍 Key Findings
 
-### Historical Emissions
+Our analysis of 223 years of global emissions data reveals critical insights:
+
+### 1. Historical Responsibility
 - **United States**: Largest historical emitter, contributing ~25% of cumulative global CO₂ emissions
-- **China**: Highest current annual emitter, reflecting rapid industrialization
+- **China**: Highest current annual emitter, reflecting rapid industrialization post-2000
 - **Top 7 Countries**: Account for majority of global emissions since the Industrial Revolution
 
-### Per Capita Analysis
-- **High-income nations** (e.g., Saudi Arabia, USA, Australia) show significantly higher per capita emissions
-- **Sub-Saharan Africa**: Among the lowest per capita emissions despite population size
-- **Income correlation**: Strong positive relationship between GNI per capita and emissions
+### 2. The Emissions Inequality Gap
+- **High-income countries** contribute >80% of global emissions while representing a smaller share of global population
+- **Low-income countries** contribute only ~18% despite housing ~50% of the world's population
+- **Per capita leaders**: Saudi Arabia, USA, and Australia show emissions 10-20x higher than developing nations
 
-### Income Group Disparities
-- **High-income countries**: Contribute >80% of global emissions with smaller population share
-- **Low-income countries**: Contribute only ~18% despite housing ~50% of global population
-- Clear evidence of **emissions inequality** based on economic development
-
-### Sectoral Breakdown
-- **Energy sector**: Dominant contributor at 76.3% of total emissions
+### 3. Sectoral Dominance
+- **Energy sector**: Overwhelming contributor at 76.3% of total emissions
 - **Agriculture**: Second largest at 13.4%
-- **Industrial Processes, Waste, Land-Use**: Smaller but significant contributions
+- **Industrial Processes, Waste, Land-Use**: Collectively represent remaining contributions
 
-### Renewable Energy Trends
-- **Rapid growth**: Solar and wind capacity expanding exponentially
-- **Regional variation**: Europe and Asia leading in renewable adoption
-- **Technology shift**: Decreasing costs driving wider deployment
+### 4. Renewable Energy Progress
+- **Rapid acceleration**: Solar and wind capacity expanding exponentially since 2010
+- **Cost reduction**: Renewable costs have dropped 80%+ making them competitive with fossil fuels
+- **Regional leaders**: Europe and Asia leading adoption, but global momentum building
 
-### Land-Use Change
-- **Net negative contribution**: Reflects global afforestation and reforestation efforts
-- **Regional variation**: Some areas show emission increases, others decreases
+### 5. The Population-Emissions Disconnect
+- Strong correlation exists between **economic development** (not population) and emissions
+- High-income nations with smaller populations emit more than populous developing countries
+- Challenges the myth that population growth is the primary emissions driver
+
+---
+
 
 ## 📌 Policy Recommendations
 
-Based on our analysis, we recommend:
+Based on our comprehensive analysis, we propose the following evidence-based actions:
 
-### 1. Expand Renewable Energy Adoption
-- Accelerate investment in solar, wind, and other renewable technologies
-- Target 100% renewable energy in electricity generation by 2050
+### 1. Accelerate Renewable Energy Transition
+- Target **100% renewable energy** in electricity generation by 2050
 - Prioritize deployment in high-emission countries
+- Leverage falling costs to expand access in developing nations
 
-### 2. Incentivize Renewable Energy Deployment
-- Implement subsidies and tax breaks for renewable installations
-- Create favorable regulatory frameworks
-- Support public-private partnerships
+### 2. Address Emissions Inequality
+- Implement **differentiated climate responsibilities** based on historical emissions
+- Support developing nations through technology transfer and capacity building
+- Establish fair carbon pricing that accounts for development needs
 
-### 3. Promote Research & Development
-- Increase funding for emerging technologies (energy storage, green hydrogen)
-- Support innovation in carbon capture and storage
-- Develop next-generation renewable technologies
+### 3. Focus on the Energy Sector
+- Given energy's 76% contribution, it must be the primary focus
+- Accelerate coal phase-out in high-emission countries
+- Invest in grid infrastructure for renewable integration
 
-### 4. Support Energy Efficiency Measures
-- Mandate energy audits for large facilities
-- Promote adoption of energy-efficient technologies
-- Implement building efficiency standards
-- Encourage sustainable transportation
+### 4. Promote Research & Innovation
+- Increase funding for energy storage and green hydrogen technologies
+- Support carbon capture and storage development
+- Drive next-generation renewable innovations
 
-### 5. Address Emissions Inequality
-- Support developing nations in clean energy transitions
-- Establish fair carbon pricing mechanisms
-- Provide technology transfer and capacity building
+### 5. Ensure Equitable Climate Action
+- Recognize that population growth is not the primary driver
+- Support clean development pathways for growing economies
+- Provide climate finance for vulnerable nations
+
+---
+
 
 ## 🧑‍💼 Team
 
-This project was developed by graduate students in the DATS 6401 Data Visualization course:
+This project was developed by graduate students in the DATS 6401 Data Visualization course at George Washington University:
 
-- **Prudhvi Chekuri**
-  - Country-level CO₂ emissions analysis
-  - Interactive plots and animations
-  - Choropleth map development
+- **Prudhvi Chekuri** - Country-level CO₂ emissions analysis and interactive visualizations
+- **Satya Phanindra Kumar Kalaga** - Sectoral analysis and advanced visualization techniques
+- **Deepika Reddygari** - Renewable energy analysis and policy recommendations
 
-- **Satya Phanindra Kumar Kalaga**
-  - Sectoral analysis of emissions
-  - Project structuring and organization
-  - Advanced visualization techniques
+---
 
-- **Deepika Reddygari**
-  - Renewable energy analysis
-  - Policy recommendations
-  - Technical report writing and documentation
+## 📊 What Makes This Project Unique?
 
-## 📄 Description of Data
-### Dataset Details
+Unlike typical emissions dashboards, this project:
 
-The analysis is based on datasets sourced from Gapminder, Climate Watch, and IRENA:
+1. **Spans 223 years** of historical data (1800-2022), providing unprecedented historical context
+2. **Combines multiple perspectives**: Country-level, sectoral, income-based, and per capita analysis
+3. **Integrates dual platforms**: Jupyter notebooks for detailed analysis + Tableau for interactive exploration
+4. **Focuses on equity**: Highlights emissions inequality and challenges common misconceptions
+5. **Provides actionable insights**: Evidence-based recommendations grounded in comprehensive data
 
-1. **CO₂ Emissions by Country**: Total and per capita CO₂ emissions (Gapminder).
-2. **Population by Country**: Historical and forecasted population data (Gapminder).
-3. **Gross National Income (GNI) Per Capita**: Income levels for countries (Gapminder).
-4. **CO₂ Emissions by Sector**: Sector-wise emissions data (Climate Watch).
-5. **Renewable Energy Dataset**: Installed electricity capacity by technology (IRENA).
-
-Key Features of the Data:
-- **Temporal Coverage**: Data spans multiple decades.
-- **Regional Segmentation**: Organized by country and region.
-- **Sectoral Breakdown**: Detailed sector-wise emissions.
-
-## 📊 Conclusion
-
-CO₂ emissions drive climate change, leading to rising temperatures, extreme weather events, and biodiversity loss. This project demonstrates that addressing emissions requires:
-
-- **Global collaboration** across nations and sectors
-- **Technological innovation** in renewable energy and carbon capture
-- **Equitable climate policies** that address emissions inequality
-- **Data-driven decision making** informed by comprehensive analysis
-
-The visualizations and analyses presented in this dashboard provide actionable insights for policymakers, researchers, and environmental advocates working toward a sustainable future.
-
-## ⚠️ Limitations
-
-- **Data gaps**: Incomplete data for certain regions and sectors, particularly in developing nations
-- **Scope**: Focus limited to CO₂, excluding other greenhouse gases (methane, nitrous oxide, etc.)
-- **Historical data**: Earlier periods (pre-1950) have less granular country-level data
-- **Sectoral classifications**: Variations in sector definitions across data sources
-
-## 🔮 Future Directions
-
-- **Multi-gas analysis**: Expand to include methane, nitrous oxide, and other GHGs
-- **Enhanced granularity**: Incorporate sub-national and city-level emissions data
-- **Predictive modeling**: Develop forecasting models for future emissions scenarios
-- **Real-time dashboards**: Integrate near-real-time emissions monitoring
-- **Policy impact analysis**: Quantify effects of implemented climate policies
-- **Economic modeling**: Include detailed cost-benefit analyses of mitigation strategies
+---
 
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### MIT License Summary
-```
-MIT License
+---
 
-Copyright (c) 2024 DATS6401
+## 📞 Contact & Resources
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
-
-## 📞 Contact
-
-This project was developed as part of the **DATS 6401 - Data Visualization** course at George Washington University.
-
-### Get In Touch
-
+- **Full Documentation**: See [INSTALLATION.md](INSTALLATION.md) for setup and usage details
 - **Repository**: [DATS6401/Final-Project](https://github.com/DATS6401/Final-Project)
-- **Issues**: For bugs or feature requests, please [open an issue](https://github.com/DATS6401/Final-Project/issues)
-- **Contributions**: We welcome contributions! Please feel free to submit pull requests
-
-### Team Members
-
-For questions or collaboration opportunities, please reach out through the GitHub repository.
-
----
-
-## 🙏 Acknowledgments
-
-We would like to thank:
-- **Gapminder** for providing comprehensive global development data
-- **Climate Watch** for detailed emissions tracking datasets
-- **IRENA** for renewable energy statistics
-- **George Washington University** and the DATS 6401 instructors for guidance and support
-
----
-
-## 📚 References
-
-1. **Gapminder Foundation**: [CO₂ Emissions by Country](https://gapminder.org)
-   - Historical emissions data and socio-economic indicators
-
-2. **Climate Watch**: [Global Greenhouse Gas Emissions](https://climatewatchdata.org)
-   - Comprehensive emissions data by sector and country
-
-3. **IRENA**: [Renewable Energy Statistics](https://irena.org)
-   - Global renewable energy capacity and generation data
-
-4. **IPCC**: [Climate Change Reports](https://www.ipcc.ch/)
-   - Scientific basis for climate change analysis
-
-5. **Our World in Data**: [CO₂ and Greenhouse Gas Emissions](https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions)
-   - Additional context and visualization inspiration
+- **Issues**: [Report bugs or request features](https://github.com/DATS6401/Final-Project/issues)
 
 ---
 
@@ -486,4 +212,5 @@ We would like to thank:
 Made with ❤️ for a sustainable future 🌱
 
 </div>
+
 
